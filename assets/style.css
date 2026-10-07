@@ -537,3 +537,11 @@ summary:focus-visible,
 }
 
 .compat-note a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* From the curb --------------------------------------------------------------*/
+.street { padding: 64px 0; background: var(--white); }
+.street__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 28px; }
+@media (min-width: 900px) { .street { padding: 96px 0; } .street__grid { grid-template-columns: repeat(4, 1fr); gap: 16px; } }
+.street__tile { margin: 0; }
+.street__tile img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 14px; display: block; }
+.street__tile figcaption { font-size: 13px; color: var(--ink-soft); margin-top: 8px; }
