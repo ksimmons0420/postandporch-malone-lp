@@ -56,6 +56,7 @@ head = html.split("<head>", 1)[1].split("</head>", 1)[0]
 head = head.replace('<link rel="stylesheet" href="assets/style.css">',
                     "<link rel=\"stylesheet\" href=\"{{ 'pp-malone.css' | asset_url }}\">")
 head = re.sub(r'<link rel="canonical" href="[^"]*">', '<link rel="canonical" href="{{ canonical_url }}">', head)
+head = re.sub(r'\n?<meta name="robots"[^>]*>', '', head)  # preview-only noindex must never reach the store
 head = re.sub(r'<meta property="og:url" content="[^"]*">', '<meta property="og:url" content="{{ canonical_url }}">', head)
 head = head.replace("https://ksimmons0420.github.io/postandporch-malone-lp/assets/img/og-image.jpg",
                     "{{ 'pp-malone-img-og-image.jpg' | asset_url }}")
