@@ -441,9 +441,13 @@
 /* ---- Shopify-theme hardening: the theme's global element styles must not leak in ---- */
 #pp-malone-lp { position: relative; display: block; width: 100%; max-width: none; margin: 0; padding: 0; text-align: left; }
 #pp-malone-lp :is(h1, h2, h3) { text-transform: none; letter-spacing: normal; line-height: inherit; }
-#pp-malone-lp :is(ul, ol) { margin: 0; }
+#pp-malone-lp :is(ul, ol) { margin: 1em 0; padding: 0; }  /* = browser default block margins, so it matches the standalone page */
+#pp-malone-lp li { margin: 0; padding: 0; }
+#pp-malone-lp :is(p, li, blockquote, summary, td, th, address, figcaption, cite) { line-height: inherit; font-size: inherit; }
+#pp-malone-lp :is(button, summary, input, select, textarea) { font-family: inherit; }
 #pp-malone-lp :is(blockquote, figure, address, details, table) { margin: 0; }
-#pp-malone-lp blockquote { padding: 0; border: 0; quotes: none; }
+#pp-malone-lp table { border: 0; }
+#pp-malone-lp :is(blockquote, details) { padding: 0; border: 0; quotes: none; }
 #pp-malone-lp :is(th, td) { border-top: 0; border-left: 0; border-right: 0; background: none; text-transform: none; letter-spacing: normal; }
 #pp-malone-lp :is(a, a:hover) { text-decoration: none; }
 #pp-malone-lp a.colorway-tile, #pp-malone-lp .btn { text-decoration: none; }
@@ -551,7 +555,7 @@
         <div class="tools-line reveal">
           <strong>Tools:</strong> drill, wrench, level. The 4x4 (or concrete anchors) are up to you &mdash; not included.
         </div>
-        <p class="compat-note reveal">Heads up: The Malone ships in two boxes, mailbox and post, and they occasionally arrive a day apart. Full step-by-step instructions and the install video are at <a href="https://postandporch.com/pages/installation?utm_source=lp&amp;utm_medium=landing&amp;utm_campaign=malone-v1&amp;lp=malone-v1" target="_blank" rel="noopener">postandporch.com/installation</a>.</p>
+        <p class="compat-note reveal">Heads up: <em>The Malone</em> ships in two boxes, mailbox and post, and they occasionally arrive a day apart. Full step-by-step instructions and the install video are at <a href="https://postandporch.com/pages/installation?utm_source=lp&amp;utm_medium=landing&amp;utm_campaign=malone-v1&amp;lp=malone-v1" target="_blank" rel="noopener">postandporch.com/installation</a>.</p>
       </div>
 
       <div class="reveal">
@@ -570,7 +574,7 @@
 <!-- ================= COLORWAY GALLERY + BUNDLE RECEIPT ================= -->
 <section class="build" data-section="build">
   <div class="container">
-    <div class="eyebrow reveal">Build The Malone</div>
+    <div class="eyebrow reveal">Build <em>The Malone</em></div>
     <h2 class="section-h reveal">Make it match the house, not just the mail.</h2>
     <p class="section-sub reveal">Five powder-coated finishes, three color-series options, and a straightforward bundle &mdash; so you know exactly what you&rsquo;re paying for.</p>
 
@@ -621,7 +625,7 @@
       <table class="receipt-table">
         <caption>What&rsquo;s actually included</caption>
         <tbody>
-          <tr><th scope="row">The Malone Mailbox (Regular)</th><td>$159</td></tr>
+          <tr><th scope="row"><em>The Malone</em> Mailbox (Regular)</th><td>$159</td></tr>
           <tr><th scope="row">Metal mailbox post, bundled</th><td>$129</td></tr>
           <tr><th scope="row">4&Prime; magnetic house numbers</th><td>$13 each</td></tr>
         </tbody>
@@ -652,16 +656,16 @@
           <li class="feature-tile">
             <div class="feature-tile__icon"><svg class="ph ph-duo" width="26" height="26" viewBox="0 0 256 256" aria-hidden="true"><g fill="currentColor"><path d="M229.66 90.34L90.34 229.66a8 8 0 0 1-11.31 0L26.34 177a8 8 0 0 1 0-11.31L165.66 26.34a8 8 0 0 1 11.31 0L229.66 79a8 8 0 0 1 0 11.34" opacity=".2"/><path d="m235.32 73.37l-52.69-52.68a16 16 0 0 0-22.63 0L20.68 160a16 16 0 0 0 0 22.63l52.69 52.68a16 16 0 0 0 22.63 0L235.32 96a16 16 0 0 0 0-22.63M84.68 224L32 171.31l32-32l26.34 26.35a8 8 0 0 0 11.32-11.32L75.31 128L96 107.31l26.34 26.35a8 8 0 0 0 11.32-11.32L107.31 96L128 75.31l26.34 26.35a8 8 0 0 0 11.32-11.32L139.31 64l32-32L224 84.69Z"/></g></svg></div>
             <h3>14-gauge steel</h3>
-            <p>Heavier gauge than most big-box mailboxes, so it won&rsquo;t dent or flex.</p>
+            <p>Solid 14-gauge steel, built in the USA for a sturdy, substantial feel.</p>
           </li>
           <li class="feature-tile">
             <div class="feature-tile__icon"><svg class="ph ph-duo" width="26" height="26" viewBox="0 0 256 256" aria-hidden="true"><g fill="currentColor"><path d="M208 144a80 80 0 0 1-160 0c0-72 80-128 80-128s80 56 80 128" opacity=".2"/><path d="M174 47.75a254.2 254.2 0 0 0-41.45-38.3a8 8 0 0 0-9.18 0A254.2 254.2 0 0 0 82 47.75C54.51 79.32 40 112.6 40 144a88 88 0 0 0 176 0c0-31.4-14.51-64.68-42-96.25M128 216a72.08 72.08 0 0 1-72-72c0-57.23 55.47-105 72-118c16.53 13 72 60.75 72 118a72.08 72.08 0 0 1-72 72m55.89-62.66a57.6 57.6 0 0 1-46.56 46.55a9 9 0 0 1-1.33.11a8 8 0 0 1-1.32-15.89c16.57-2.79 30.63-16.85 33.44-33.45a8 8 0 0 1 15.78 2.68Z"/></g></svg></div>
             <h3>Powder-coated finish</h3>
-            <p>Resists rust, fading, and corrosion &mdash; no repainting, ever.</p>
+            <p>Designed to resist rust, fading, and corrosion.</p>
           </li>
           <li class="feature-tile">
             <div class="feature-tile__icon"><svg class="ph ph-duo" width="26" height="26" viewBox="0 0 256 256" aria-hidden="true"><g fill="currentColor"><path d="M216 56v56c0 96-88 120-88 120s-88-24-88-120V56a8 8 0 0 1 8-8h160a8 8 0 0 1 8 8" opacity=".2"/><path d="M208 40H48a16 16 0 0 0-16 16v56c0 52.72 25.52 84.67 46.93 102.19c23.06 18.86 46 25.26 47 25.53a8 8 0 0 0 4.2 0c1-.27 23.91-6.67 47-25.53C198.48 196.67 224 164.72 224 112V56a16 16 0 0 0-16-16m0 72c0 37.07-13.66 67.16-40.6 89.42a129.3 129.3 0 0 1-39.4 22.2a128.3 128.3 0 0 1-38.92-21.81C61.82 179.51 48 149.3 48 112V56h160ZM82.34 141.66a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 11.32l-56 56a8 8 0 0 1-11.32 0Z"/></g></svg></div>
-            <h3>Weather-tested</h3>
+            <h3>Weather-ready</h3>
             <p>Built for rain, snow, and sun. Keep it clear of sprinklers and standing water for the longest finish life.</p>
           </li>
           <li class="feature-tile">
@@ -743,7 +747,7 @@
       </div>
       <div class="review-card">
         <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="sr-only">5 out of 5 stars.</span>
-        <blockquote>&ldquo;The patina is coming on.&rdquo; &mdash; on their Corten Steel Malone, two days after install.</blockquote>
+        <blockquote>&ldquo;The patina is coming on.&rdquo; &mdash; on their Corten Steel Malone.</blockquote>
         <cite>Verified buyer</cite>
       </div>
     </div>
@@ -758,7 +762,7 @@
         <svg class="ph ph-duo-b" width="28" height="28" viewBox="0 0 256 256" aria-hidden="true"><g fill="currentColor"><path d="M216 128a88 88 0 1 1-88-88a88 88 0 0 1 88 88" opacity=".2"/><path d="M88 104H40a8 8 0 0 1-8-8V48a8 8 0 0 1 16 0v28.69l14.63-14.63A95.43 95.43 0 0 1 130 33.94h.53a95.36 95.36 0 0 1 67.07 27.33a8 8 0 0 1-11.18 11.44a79.52 79.52 0 0 0-55.89-22.77h-.45a79.56 79.56 0 0 0-56.14 23.43L59.31 88H88a8 8 0 0 1 0 16m128 48h-48a8 8 0 0 0 0 16h28.69l-14.63 14.63a79.56 79.56 0 0 1-56.13 23.43h-.45a79.52 79.52 0 0 1-55.89-22.77a8 8 0 1 0-11.18 11.44a95.36 95.36 0 0 0 67.07 27.33h.52a95.43 95.43 0 0 0 67.36-28.12L208 179.31V208a8 8 0 0 0 16 0v-48a8 8 0 0 0-8-8"/></g></svg>
         <div>
           <h3>Free 30-day exchanges</h3>
-          <p>Not the right fit? Exchange it, no questions asked.</p>
+          <p>Not the right fit? Exchange it within 30 days.</p>
         </div>
       </li>
       <li class="trust__item">
@@ -792,7 +796,7 @@
       </details>
       <details class="faq-item reveal" data-question="existing-post">
         <summary>I already have a post &mdash; do I need the bundle?</summary>
-        <p>Our post slides over a wooden 4x4 or bolts to concrete, so most people install it fresh. If you want to keep a mailbox post from another brand, the $40 mailbox bracket adapter lets The Malone mount to it. A wall-mounted version is also available if you&rsquo;d rather skip the post entirely.</p>
+        <p>Our post slides over a wooden 4x4 or bolts to concrete, so most people install it fresh. If you want to keep a mailbox post from another brand, the $40 mailbox bracket adapter lets <em>The Malone</em> mount to it. A wall-mounted version is also available if you&rsquo;d rather skip the post entirely.</p>
       </details>
       <details class="faq-item reveal" data-question="numbers-included">
         <summary>Are the house numbers included?</summary>
@@ -834,7 +838,7 @@
 </footer>
 </div>
 <div id="pp-malone-sticky" class="sticky-cta">
-  <div class="sticky-cta__price">from $159<span>The Malone</span></div>
+  <div class="sticky-cta__price">from $159<span><em>The Malone</em></span></div>
   <a class="btn btn-primary" href="https://postandporch.com/products/malone-post-mounted-mailbox-with-numbers?utm_source=lp&amp;utm_medium=landing&amp;utm_campaign=malone-v1&amp;lp=malone-v1" data-cta-location="sticky_mobile">Build Yours &rarr;</a>
 </div>
 <script>

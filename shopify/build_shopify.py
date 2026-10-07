@@ -81,9 +81,13 @@ BASE_RESET = f"""
 /* ---- Shopify-theme hardening: the theme's global element styles must not leak in ---- */
 {SCOPE} {{ position: relative; display: block; width: 100%; max-width: none; margin: 0; padding: 0; text-align: left; }}
 {SCOPE} :is(h1, h2, h3) {{ text-transform: none; letter-spacing: normal; line-height: inherit; }}
-{SCOPE} :is(ul, ol) {{ margin: 0; }}
+{SCOPE} :is(ul, ol) {{ margin: 1em 0; padding: 0; }}  /* = browser default block margins, so it matches the standalone page */
+{SCOPE} li {{ margin: 0; padding: 0; }}
+{SCOPE} :is(p, li, blockquote, summary, td, th, address, figcaption, cite) {{ line-height: inherit; font-size: inherit; }}
+{SCOPE} :is(button, summary, input, select, textarea) {{ font-family: inherit; }}
 {SCOPE} :is(blockquote, figure, address, details, table) {{ margin: 0; }}
-{SCOPE} blockquote {{ padding: 0; border: 0; quotes: none; }}
+{SCOPE} table {{ border: 0; }}
+{SCOPE} :is(blockquote, details) {{ padding: 0; border: 0; quotes: none; }}
 {SCOPE} :is(th, td) {{ border-top: 0; border-left: 0; border-right: 0; background: none; text-transform: none; letter-spacing: normal; }}
 {SCOPE} :is(a, a:hover) {{ text-decoration: none; }}
 {SCOPE} a.colorway-tile, {SCOPE} .btn {{ text-decoration: none; }}
