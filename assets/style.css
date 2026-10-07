@@ -535,3 +535,5 @@ summary:focus-visible,
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+.compat-note a { text-decoration: underline; text-underline-offset: 3px; }
