@@ -145,7 +145,7 @@ summary:focus-visible,
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 40px 20px 36px;
+  padding: 20px 20px 16px;
 }
 @media (min-width: 768px) { .hero__copy { padding: 48px 32px 44px; } }
 @media (min-width: 900px) { .hero__copy { padding: 48px 56px; max-width: 560px; } }
@@ -153,33 +153,41 @@ summary:focus-visible,
 .hero__credential {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 8px 14px;
+  padding: 7px 14px;
   font-size: 13px;
   font-weight: 600;
   color: var(--ink);
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   width: fit-content;
+  white-space: nowrap;
 }
 .hero__credential .stars { color: var(--redend-point); letter-spacing: 1px; }
+.hero__credential-full { display: none; }
+@media (min-width: 900px) {
+  .hero__credential { margin-bottom: 20px; white-space: normal; }
+  .hero__credential-short { display: none; }
+  .hero__credential-full { display: inline; }
+}
 
 .hero h1 {
-  font-size: 34px;
-  line-height: 1.12;
-  margin-bottom: 16px;
+  font-size: 32px;
+  line-height: 1.14;
+  margin-bottom: 8px;
 }
-@media (min-width: 768px) { .hero h1 { font-size: 46px; } }
+@media (min-width: 768px) { .hero h1 { font-size: 46px; margin-bottom: 16px; } }
 @media (min-width: 1100px) { .hero h1 { font-size: 54px; } }
 
 .hero__sub {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--ink-soft);
   max-width: 460px;
-  margin-bottom: 26px;
+  margin-bottom: 14px;
 }
+@media (min-width: 768px) { .hero__sub { font-size: 18px; margin-bottom: 26px; } }
 .hero__sub .prod { font-weight: 600; color: var(--ink); }
 
 .hero__ctaRow { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
@@ -187,10 +195,12 @@ summary:focus-visible,
 .hero__price span { color: var(--ink-soft); font-family: var(--font-body); font-size: 13px; display: block; }
 
 .hero__reassure {
+  display: none;
   margin-top: 18px;
   font-size: 13px;
   color: var(--ink-soft);
 }
+@media (min-width: 900px) { .hero__reassure { display: block; } }
 
 .hero__media {
   position: relative;
