@@ -94,6 +94,15 @@
   document.querySelectorAll('[data-video-autoplay]').forEach(function (wrap) {
     var video = wrap.querySelector('video');
     if (!video) return;
+    var posterUrl = video.getAttribute('data-poster');  // poster is deferred so it never competes with the hero image
+    if (posterUrl) {
+      if ('IntersectionObserver' in window) {
+        var pObserver = new IntersectionObserver(function (entries, obs) {
+          if (entries[0].isIntersecting) { video.setAttribute('poster', posterUrl); obs.disconnect(); }
+        }, { rootMargin: '800px 0px' });
+        pObserver.observe(wrap);
+      } else { video.setAttribute('poster', posterUrl); }
+    }
     if ('IntersectionObserver' in window) {
       var vObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
@@ -122,6 +131,7 @@
       after.style.width = pct + '%';
       handle.style.left = pct + '%';
       handle.setAttribute('aria-valuenow', String(Math.round(pct)));
+      handle.setAttribute('aria-valuetext', Math.round(100 - pct) + ' percent patina');
       if (afterImg) afterImg.style.width = (100 / (pct / 100)) + '%';
     }
 
@@ -166,11 +176,5 @@
       if (e.key === 'ArrowLeft') { setPos(cur - 5); e.preventDefault(); }
       if (e.key === 'ArrowRight') { setPos(cur + 5); e.preventDefault(); }
     });
-    handle.setAttribute('tabindex', '0');
-    handle.setAttribute('role', 'slider');
-    handle.setAttribute('aria-label', 'Drag to compare raw steel and rusted patina');
-    handle.setAttribute('aria-valuemin', '0');
-    handle.setAttribute('aria-valuemax', '100');
-    handle.setAttribute('aria-valuenow', '50');
   });
 })();
