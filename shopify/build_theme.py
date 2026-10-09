@@ -89,7 +89,18 @@ GUARD = r"""
 (function () {
   var SEL = ['[id*="alia" i]', '[class*="alia-" i]', '[class*="klaviyo-form" i][role="dialog"]', '[id*="privy" i]', '[class*="popup" i][class*="modal" i]'];
   var sticky = document.querySelector('.sticky-cta, .sticky-bar, [data-sticky-cta]');
-  function hide(el) { if (!el || el === sticky || (sticky && sticky.contains(el))) return; if (/^alia-root/.test(el.id)) { el.remove(); return; } el.style.setProperty('display', 'none', 'important'); }
+  var suppressed = false;
+  function hide(el) { if (!el || el === sticky || (sticky && sticky.contains(el))) return; suppressed = true; if (/^alia-root/.test(el.id)) { el.remove(); return; } el.style.setProperty('display', 'none', 'important'); }
+  /* Popups lock page scroll (Alia sets body.style.overflow=hidden on mount). Once we suppress one, its unlock never runs — release it ourselves. */
+  function unlock() {
+    if (!suppressed) return;
+    [document.body, document.documentElement].forEach(function (el) {
+      var st = el.style;
+      if (/hidden/.test(st.overflow)) st.removeProperty('overflow');
+      if (/hidden/.test(st.overflowY)) st.removeProperty('overflow-y');
+      if (st.position === 'fixed') { st.removeProperty('position'); st.removeProperty('top'); st.removeProperty('width'); }
+    });
+  }
   function sweep() {
     SEL.forEach(function (s) { try { document.querySelectorAll(s).forEach(hide); } catch (e) {} });
     var vw = window.innerWidth, vh = window.innerHeight;
@@ -100,10 +111,15 @@ GUARD = r"""
       var z = parseInt(cs.zIndex, 10) || 0;
       if (z >= 1000 && r.width * r.height >= vw * vh * 0.25 && !/privacy|consent|cookie|shopify-pc/i.test(el.id + ' ' + el.className)) hide(el);
     });
+    unlock();
   }
   sweep();
-  var mo = new MutationObserver(sweep); mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
-  setTimeout(function () { mo.disconnect(); }, 90000);
+  /* Permanent, coalesced per frame: the CSS hide rule is permanent, so a late (timed/exit-intent) popup must also get its scroll-lock released. */
+  var queued = false;
+  function schedule() { if (queued) return; queued = true; requestAnimationFrame(function () { queued = false; sweep(); }); }
+  var mo = new MutationObserver(schedule);
+  mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
 })();
 """
 (OUT / "assets" / "pp-malone.js").write_text(js.rstrip() + "\n" + GUARD)
